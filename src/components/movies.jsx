@@ -73,12 +73,19 @@ class Movies extends Component {
 
     const { totalCount, data: movies } = this.getPagedData();
 
+    const divStyle = {
+      color: 'Red'
+    };
     return (
       <div className="row">
         <div className="col-3">
         
         </div>
+        <div style={divStyle}>
+        <label>Hey, Angela pls come home bali bali </label>
+        </div>
         <div className="col">
+          
           <Link
             to="/movies/new"
             className="btn btn-primary"

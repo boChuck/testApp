@@ -1,39 +1,37 @@
-import React, { Component } from "react";
-import { Route, Redirect, Switch } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import Movies from "./components/movies";
-import MovieForm from "./components/movieForm";
-import Customers from "./components/customers";
-import Rentals from "./components/rentals";
-import NotFound from "./components/notFound";
-import NavBar from "./components/navBar";
-import LoginForm from "./components/loginForm";
-import RegisterForm from "./components/registerForm";
-import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
+import React, { useRef, useEffect } from 'react';
+import { useLocation, Switch } from 'react-router-dom';
+import AppRoute from './utils/AppRoute';
+import ScrollReveal from './utils/ScrollReveal';
+//import ReactGA from 'react-ga';
 
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <ToastContainer />
-        <NavBar />
-        <main className="container">
-          <Switch>
-            <Route path="/register" component={RegisterForm} />
-            <Route path="/login" component={LoginForm} />
-            <Route path="/movies/:id" component={MovieForm} />
-            <Route path="/movies" component={Movies} />
-            <Route path="/customers" component={Customers} />
-            <Route path="/rentals" component={Rentals} />
-            <Route path="/not-found" component={NotFound} />
-            <Redirect from="/" exact to="/movies" />
-            <Redirect to="/not-found" />
-          </Switch>
-        </main>
-      </React.Fragment>
-    );
-  }
+// Layouts
+import LayoutDefault from './layouts/LayoutDefault';
+
+// Views 
+import Home from './views/Home';
+
+const App = () => {
+
+  const childRef = useRef();
+  let location = useLocation();
+
+  useEffect(() => {
+    const page = location.pathname;
+    document.body.classList.add('is-loaded')
+    childRef.current.init();
+    // trackPage(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
+  return (
+    <ScrollReveal
+      ref={childRef}
+      children={() => (
+        <Switch>
+          <AppRoute exact path="/" component={Home} layout={LayoutDefault} />
+        </Switch>
+      )} />
+  );
 }
 
 export default App;

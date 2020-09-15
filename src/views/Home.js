@@ -1,24 +1,24 @@
-import React from 'react';
+import React from "react";
 // import sections
-//import Hero from '../components/sections/Hero';
-import HomePage from '../components/sections/HomePage';
+import Hero from "../components/sections/Hero";
+import HomePage from "../components/sections/HomePage";
 // import FeaturesTiles from '../components/sections/FeaturesTiles';
 // import FeaturesSplit from '../components/sections/FeaturesSplit';
 // import Testimonial from '../components/sections/Testimonial';
 // import Cta from '../components/sections/Cta';
 
 const Home = () => {
-
   return (
     <>
       {/* <Hero /> */}
       <HomePage />
+      <Hero />
       {/* <FeaturesTiles /> */}
       {/* <FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" /> */}
       {/* <Testimonial topDivider /> */}
       {/* <Cta split /> */}
     </>
   );
-}
+};
 
 export default Home;

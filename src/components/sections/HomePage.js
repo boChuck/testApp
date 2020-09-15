@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Typography } from "@material-ui/core";
 import CategoryCard from "./home/CategoryCard";
@@ -57,11 +58,12 @@ const useStyles = makeStyles((theme) => ({
 const HomePage = () => {
   const classes = useStyles();
   // const navigate = useNavigate();
+  const history = useHistory();
+  const navigateTo = () => history.push("/car");
 
   return (
     <div className={classes.root}>
       <Container>
-
         <Typography
           variant="h1"
           color="primary"
@@ -82,18 +84,18 @@ const HomePage = () => {
           <CategoryCard
             name="A.K"
             imageURL={AK}
-          // onClick={() => navigate("/ak")}
+            // onClick={() => navigate("/ak")}
           />
           <CategoryCard
             name="Car"
             imageURL={Car}
-          // onClick={() => navigate("/car")}
+            onClick={() => navigateTo("/car")}
           />
           <CategoryCard
             name="More"
             // imageURL=""
             imageURL={More}
-          // onClick={() => navigate("/more")}
+            // onClick={() => navigate("/more")}
           />
         </div>
       </Container>
